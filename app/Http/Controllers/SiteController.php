@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class SiteController extends Controller
 {
@@ -22,14 +23,22 @@ class SiteController extends Controller
     {
         return view('chef');
     }
+    
     public function blog()
     {
-        return view('blog');
+        $posts = Post::orderBy('id', 'DESC')->paginate(2);
+        $links = $posts->links();
+        return view('blog', compact('posts', 'links'));
     }
-    public function blogdetails()
-    {
-        return view('blogdetails');
+
+    public function newsMore($id)
+    {   
+        $post = Post::findOrFail($id); 
+        return view('blogMore',[
+            'post'=>$post
+        ]);
     }
+    
     public function contact()
     {
         return view('contact');

@@ -1,4 +1,4 @@
-@extends('layouts/app', ['title' => "blog-single"])
+@extends('layouts/app', ['title' => "blog"])
 
 @section('content')
 
@@ -46,136 +46,28 @@
           <div class="row">
               <div class="col-lg-8 mb-5 mb-lg-0">
                   <div class="blog_left_sidebar">
+                      @foreach($posts as $post)                    
                       <article class="blog_item">
                         <div class="blog_item_img">
                           <img class="card-img rounded-0" src="img/blog/main-blog/m-blog-1.jpg" alt="">
                           <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>Jan</p>
+                            <p>{{$post -> created_at -> format('d/m/y')}}</p>
                           </a>
                         </div>
-                        
                         <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>Google inks pact for new 35-storey office</h2>
+                            <a class="d-inline-block" href="{{ route('batafsil',$post -> id) }}">
+                                <h2>{{$post->title}}</h2>
                             </a>
-                            <p>That dominion stars lights dominion divide years for fourth have don't stars is that he earth it first without heaven in place seed it second morning saying.</p>
+                            <p>{{$post->short}}</p>
                             <ul class="blog-info-link">
-                              <li><a href="#"><i class="ti-user"></i> Travel, Lifestyle</a></li>
-                              <li><a href="#"><i class="ti-comments"></i> 03 Comments</a></li>
+                              <li><a href="#"><i class="ti-user"></i>aaa</a></li>
+                              <li><a href="#"><i class="ti-comments"></i> bbb</a></li>
                             </ul>
                         </div>
                       </article>
-                      
-                      <article class="blog_item">
-                        <div class="blog_item_img">
-                          <img class="card-img rounded-0" src="img/blog/main-blog/m-blog-2.jpg" alt="">
-                          <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>Jan</p>
-                          </a>
-                        </div>
-                        
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>Google inks pact for new 35-storey office</h2>
-                            </a>
-                            <p>That dominion stars lights dominion divide years for fourth have don't stars is that he earth it first without heaven in place seed it second morning saying.</p>
-                            <ul class="blog-info-link">
-                              <li><a href="#"><i class="ti-user"></i> Travel, Lifestyle</a></li>
-                              <li><a href="#"><i class="ti-comments"></i> 03 Comments</a></li>
-                            </ul>
-                        </div>
-                      </article>
-
-                      <article class="blog_item">
-                        <div class="blog_item_img">
-                          <img class="card-img rounded-0" src="img/blog/main-blog/m-blog-3.jpg" alt="">
-                          <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>Jan</p>
-                          </a>
-                        </div>
-                        
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>Google inks pact for new 35-storey office</h2>
-                            </a>
-                            <p>That dominion stars lights dominion divide years for fourth have don't stars is that he earth it first without heaven in place seed it second morning saying.</p>
-                            <ul class="blog-info-link">
-                              <li><a href="#"><i class="ti-user"></i> Travel, Lifestyle</a></li>
-                              <li><a href="#"><i class="ti-comments"></i> 03 Comments</a></li>
-                            </ul>
-                        </div>
-                      </article>
-
-                      <article class="blog_item">
-                        <div class="blog_item_img">
-                          <img class="card-img rounded-0" src="img/blog/main-blog/m-blog-4.jpg" alt="">
-                          <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>Jan</p>
-                          </a>
-                        </div>
-                        
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>Google inks pact for new 35-storey office</h2>
-                            </a>
-                            <p>That dominion stars lights dominion divide years for fourth have don't stars is that he earth it first without heaven in place seed it second morning saying.</p>
-                            <ul class="blog-info-link">
-                              <li><a href="#"><i class="ti-user"></i> Travel, Lifestyle</a></li>
-                              <li><a href="#"><i class="ti-comments"></i> 03 Comments</a></li>
-                            </ul>
-                        </div>
-                      </article>
-
-                      <article class="blog_item">
-                        <div class="blog_item_img">
-                          <img class="card-img rounded-0" src="img/blog/main-blog/m-blog-5.jpg" alt="">
-                          <a href="#" class="blog_item_date">
-                            <h3>15</h3>
-                            <p>Jan</p>
-                          </a>
-                        </div>
-                        
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
-                                <h2>Google inks pact for new 35-storey office</h2>
-                            </a>
-                            <p>That dominion stars lights dominion divide years for fourth have don't stars is that he earth it first without heaven in place seed it second morning saying.</p>
-                            <ul class="blog-info-link">
-                              <li><a href="#"><i class="ti-user"></i> Travel, Lifestyle</a></li>
-                              <li><a href="#"><i class="ti-comments"></i> 03 Comments</a></li>
-                            </ul>
-                        </div>
-                      </article>
-                      
-
-
-                      <nav class="blog-pagination justify-content-center d-flex">
-                          <ul class="pagination">
-                              <li class="page-item">
-                                  <a href="#" class="page-link" aria-label="Previous">
-                                      <span aria-hidden="true">
-                                          <span class="ti-arrow-left"></span>
-                                      </span>
-                                  </a>
-                              </li>
-                              <li class="page-item">
-                                  <a href="#" class="page-link">1</a>
-                              </li>
-                              <li class="page-item active">
-                                  <a href="#" class="page-link">2</a>
-                              </li>
-                              <li class="page-item">
-                                  <a href="#" class="page-link" aria-label="Next">
-                                      <span aria-hidden="true">
-                                          <span class="ti-arrow-right"></span>
-                                      </span>
-                                  </a>
-                              </li>
-                          </ul>
+                      @endforeach
+                      <nav class="blog-pagination justify-content-center d-flex">  
+                            {{$links}}
                       </nav>
                   </div>
               </div>

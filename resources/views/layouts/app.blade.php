@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{$title}}</title>
-	<link rel="icon" href="img/Fevicon.png" type="image/png">
+	<link rel="icon" href="/img/Fevicon.png" type="image/png">
 
-  <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
-  <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
-  <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-  <link rel="stylesheet" href="vendors/Magnific-Popup/magnific-popup.css">
+  <link rel="stylesheet" href="/vendors/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="/vendors/owl-carousel/owl.theme.default.min.css">
+  <link rel="stylesheet" href="/vendors/owl-carousel/owl.carousel.min.css">
+  <link rel="stylesheet" href="/vendors/Magnific-Popup/magnific-popup.css">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -33,19 +33,10 @@
             <ul class="nav navbar-nav menu_nav justify-content-end">
               <li class="nav-item active"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
               <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li> 
-              <li class="nav-item"><a class="nav-link" href="{{ route('menu') }}">Menu</a>
-              <li class="nav-item"><a class="nav-link" href="{{ route('chef') }}">Chef</a>
-
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Blog</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="{{ route('blog') }}">Blog Single</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{{ route('blogdetails') }}">Blog Details</a></li>
-                </ul>
-							</li>
-
-              <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ route('menu') }}">Menu</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ route('chef') }}">Chef</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ route('blog') }}">News</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ route('contact')}}">Contact</a></li>
             </ul>
           </div> 
         </div>
@@ -139,13 +130,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 
-  <script src="vendors/jquery/jquery-3.2.1.min.js"></script>
-  <script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-  <script src="vendors/nice-select/jquery.nice-select.min.js"></script>
-  <script src="vendors/Magnific-Popup/jquery.magnific-popup.min.js"></script>
-  <script src="js/jquery.ajaxchimp.min.js"></script>
-  <script src="js/mail-script.js"></script>
-  <script src="js/main.js"></script>
+  <script src="/vendors/jquery/jquery-3.2.1.min.js"></script>
+  <script src="/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="/vendors/owl-carousel/owl.carousel.min.js"></script>
+  <script src="/vendors/nice-select/jquery.nice-select.min.js"></script>
+  <script src="/vendors/Magnific-Popup/jquery.magnific-popup.min.js"></script>
+  <script src="/js/jquery.ajaxchimp.min.js"></script>
+  <script src="/js/mail-script.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>
