@@ -23,3 +23,7 @@ Route::get('/News', 'SiteController@blog')->name('blog');
 Route::get('/News/{id}', 'SiteController@newsMore')->name('batafsil');
 //contact
 Route::get('/contact', 'SiteController@contact')->name('contact');
+//Admin routes
+Route::namespace('Admin')->name('admin.')->prefix('admin') -> group(function(){
+    Route::resource('posts', 'PostsController');
+});
