@@ -43,9 +43,18 @@ class PostsController extends Controller
             'title'=> 'required',
             'short'=> 'required',
             'content'=> 'required',
+            'img' => 'required|file|mimes:jpeg,jpg,png'
         ]);
+        //Upload image to storage
+        $img_name=$request->file('img')->store('posts', ['disk' => 'public']);
         
-        Post::create($request->post());
+        Post::create([
+            'title' => $request->post('title'),
+            'short' => $request->post('short'),
+            'content' => $request->post('content'),
+            'img' => $img_name,
+
+        ]);
 
         return redirect()->route('admin.posts.index')->with('success', 'Item created!');
         

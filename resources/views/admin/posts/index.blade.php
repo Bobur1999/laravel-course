@@ -25,6 +25,7 @@
 
         <table class="table table-bordered">
             <thead>
+                <th>rasm</th>
                 <th>sarlavha</th>
                 <th width="130px">amallar</th>
             </thead>
@@ -32,6 +33,7 @@
                
                 @foreach($posts as $post)
                 <tr>
+                    <td> {{$post->img}}</td>
                     <td> {{$post->title}}  </td>
                     <td>
                         <a class="btn btn-sm btn-white float-left " href="{{route('admin.posts.show', $post->id)}}">
