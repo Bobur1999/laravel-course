@@ -24,6 +24,14 @@ Route::get('/News/{id}', 'SiteController@newsMore')->name('batafsil');
 //contact
 Route::get('/contact', 'SiteController@contact')->name('contact');
 //Admin routes
-Route::namespace('Admin')->name('admin.')->prefix('admin') -> group(function(){
+Route::namespace('Admin')->middleware('auth')->name('admin.')->prefix('admin') -> group(function(){
+    Route::get('/', function(){
+        return redirect()->route('admin.posts.index');
+    });
     Route::resource('posts', 'PostsController');
 });
+Auth::routes([
+    'register' => false
+]);
+
+// Route::get('/home', 'HomeController@index')->name('home');
