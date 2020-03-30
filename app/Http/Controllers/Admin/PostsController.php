@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
 use Image;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -121,10 +122,41 @@ class PostsController extends Controller
         'content'=> 'required|min:5'
       ]);
 
+        if($request->file('img')){
+            //Delete Old File
+            Storage::disk('public')->delete([
+                $post->img,
+                $post->thumb
+            ]);
+
+            $img_name = $request->file('img')->store('posts', ['disk' => 'public']);
+            $thumb_name = 'thumbs/'.$img_name;
+            //Create thumbnail
+            $full_path = storage_path('app/public/'.$img_name);
+            $full_thumb_path = storage_path('app/public/'.$thumb_name);
+            $thumb = Image::make($full_path);
+            
+            //proporsiya bn qirqib olish
+            // $thumb->resize(300, 300, function($constraint){
+            //     $constraint->aspectRatio();
+            // })->save($full_thumb_path);
+            
+            // kvadrat shaklida proporsiya bn qirqib olish
+            $thumb->fit(350, 350, function($constraint){
+                $constraint->aspectRatio();
+            })->save($full_thumb_path);
+        }
+        else {
+            $img_name = $post->img;
+            $thumb_name = $post->thumb;
+        }
+        
         $post->update([
             'title'=>$request->post('title'),
             'short'=>$request->post('short'),
-            'content'=>$request->post('content')
+            'content'=>$request->post('content'),
+            'img' => $img_name,
+            'thumb' =>$thumb_name
         ]);
 
         return redirect()->route('admin.posts.index')->with('success','Item update!');

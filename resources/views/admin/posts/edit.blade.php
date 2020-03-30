@@ -17,7 +17,7 @@
                 </ul>         
             </div>
         @endif
-        <form method="POST" action="{{route('admin.posts.update', $post->id)}}">
+        <form method="POST" enctype="multipart/form-data" action="{{route('admin.posts.update', $post->id)}}">
 
             @csrf
             @method('PUT')    
@@ -25,6 +25,15 @@
                 <label for="">Sarlavha</label>
                 <input class="form-control" value="{{$post->title}}" name="title" type="text">
             </div>
+
+            <div class="form-group">
+                <img src="/storage/{{$post->thumb}}" width="200px" class="img img-thumbnail" alt="">
+            </div>
+            <div class="form-group">
+                <label for="">Rasm</label>
+                <input class="form-control" name="img" type="file">
+            </div>
+            
             <div class="form-group">
                 <label for="">Qisqacha</label>
                 <input class="form-control" value="{{$post->short}}" name="short" type="text">
