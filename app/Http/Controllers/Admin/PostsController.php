@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use Image;
 
 class PostsController extends Controller
 {
@@ -45,15 +46,32 @@ class PostsController extends Controller
             'content'=> 'required',
             'img' => 'required|file|mimes:jpeg,jpg,png'
         ]);
+        
         //Upload image to storage
         $img_name=$request->file('img')->store('posts', ['disk' => 'public']);
         
+        // Create thumbnail
+        $full_path=storage_path('app/public/'.$img_name);
+        $full_thumb_path=storage_path('app/public/thumbs/'.$img_name);
+        $thumb=Image::make($full_path);
+        
+        //proporsiya bn qirqib olish
+        // $thumb->resize(300, 300, function($constraint){
+        //     $constraint->aspectRatio();
+        // })->save($full_thumb_path);
+        
+        // kvadrat
+        $thumb->fit(350, 350, function($constraint){
+            $constraint->aspectRatio();
+        })->save($full_thumb_path);
+
+        //create post item
         Post::create([
             'title' => $request->post('title'),
             'short' => $request->post('short'),
             'content' => $request->post('content'),
             'img' => $img_name,
-
+            'thumb' => 'thumbs/'.$img_name,
         ]);
 
         return redirect()->route('admin.posts.index')->with('success', 'Item created!');
@@ -100,7 +118,7 @@ class PostsController extends Controller
       $request -> validate([
         'title'=> 'required',
         'short'=> 'required',
-        'content'=> 'required|min:50'
+        'content'=> 'required|min:5'
       ]);
 
         $post->update([

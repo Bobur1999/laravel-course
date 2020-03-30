@@ -9,8 +9,6 @@
         </h6>
         
     </div>
-    <div class="card-body">
-
         @if(session()->has('success'))
             <div class="aler alert-success">
                 {{session()->get('success')}}
@@ -22,18 +20,20 @@
                 {{session()->get('delete')}}
             </div>
         @endif
-
+    <div class="card-body">
         <table class="table table-bordered">
             <thead>
-                <th>rasm</th>
-                <th>sarlavha</th>
-                <th width="130px">amallar</th>
+                <th width="100px">Rasm</th>
+                <th>Sarlavha</th>
+                <th width="130px">Amallar</th>
             </thead>
             <tbody>
                
                 @foreach($posts as $post)
                 <tr>
-                    <td> {{$post->img}}</td>
+                    <td> 
+                        <img class="img img-thumbnail" width="80px" src=" {{ '/storage/'.$post->thumb }} " alt="{{ $post->title }}">
+                    </td>
                     <td> {{$post->title}}  </td>
                     <td>
                         <a class="btn btn-sm btn-white float-left " href="{{route('admin.posts.show', $post->id)}}">
