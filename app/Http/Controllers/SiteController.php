@@ -27,15 +27,33 @@ class SiteController extends Controller
     public function blog()
     {
         $posts = Post::orderBy('id', 'DESC')->paginate(2);
+
         $links = $posts->links();
-        return view('blog', compact('posts', 'links'));
+
+        $most_viewed=Post::orderBy('views', 'DESC')->limit(4)->get();
+
+        // return view('blog', compact('posts', 'links'));
+        return view('blog',[
+            
+            'posts'=>$posts,
+            'links'=>$links,
+            'most_posts'=>$most_viewed
+
+        ]);
     }
 
     public function newsMore($id)
     {   
-        $post = Post::findOrFail($id); 
+        $post = Post::findOrFail($id);
+        
+        $post->increment('views');
+        $most_viewed=Post::orderBy('views', 'DESC')->limit(4)->get();
+        
         return view('blogMore',[
-            'post'=>$post
+            
+            'post'=>$post,
+            'most_posts'=>$most_viewed
+
         ]);
     }
     
