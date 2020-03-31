@@ -30,7 +30,7 @@ class SiteController extends Controller
 
         $links = $posts->links();
 
-        $most_viewed=Post::orderBy('views', 'DESC')->limit(4)->get();
+        $most_viewed=Post::mostViews()->get();
 
         // return view('blog', compact('posts', 'links'));
         return view('blog',[
@@ -47,7 +47,7 @@ class SiteController extends Controller
         $post = Post::findOrFail($id);
         
         $post->increment('views');
-        $most_viewed=Post::orderBy('views', 'DESC')->limit(4)->get();
+        $most_viewed=Post::mostViews()->get();
         
         return view('blogMore',[
             
