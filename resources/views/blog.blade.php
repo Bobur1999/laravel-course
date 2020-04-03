@@ -17,17 +17,11 @@
       <div class="hero-right">
         <div class="owl-carousel owl-theme w-100 hero-carousel">
           <div class="hero-carousel-item">
-            <img class="img-fluid" src="img/banner/hero-banner-sm.png" alt="">
+            <img class="img-fluid" src="" alt="">
           </div>
         </div>
       </div>
-     
-      <ul class="social-icons d-none d-lg-block">
-        <li><a href="#"><i class="ti-facebook"></i></a></li>
-        <li><a href="#"><i class="ti-twitter"></i></a></li>
-        <li><a href="#"><i class="ti-instagram"></i></a></li>
-      </ul>
-    
+      @include('parts._social-icons')
     </div>
   </section>
   <!--================Hero Banner Section end =================-->
@@ -40,24 +34,7 @@
               <div class="col-lg-8 mb-5 mb-lg-0">
                   <div class="blog_left_sidebar">
                       @foreach($posts as $post)                    
-                      <article class="blog_item">
-                        <div class="blog_item_img">
-                          <img class="card-img rounded-0" src="/storage/{{ $post->thumb}}" alt="">
-                          <a href="#" class="blog_item_date">
-                            <p>{{$post -> created_at -> format('H:i|d/m/y')}}</p>
-                          </a>
-                        </div>
-                        <div class="blog_details">
-                            <a class="d-inline-block" href="{{ route('batafsil',$post -> id) }}">
-                                <h2>{{$post->title}}</h2>
-                            </a>
-                            <p>{{$post->short}}</p>
-                            <ul class="blog-info-link">
-                              <li><a href="#"><i class="ti-eye"></i>{{$post->views}}</a></li>
-                              <li><a href="#"><i class="ti-comments"></i> commentariya</a></li>
-                            </ul>
-                        </div>
-                      </article>
+                        @include('parts._news-item', ['post' => $post])
                       @endforeach
                       <nav class="blog-pagination justify-content-center d-flex">  
                             {{$links}}

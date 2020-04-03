@@ -17,17 +17,11 @@
       <div class="hero-right">
         <div class="owl-carousel owl-theme w-100 hero-carousel">
           <div class="hero-carousel-item">
-            <img class="img-fluid" src="img/banner/hero-banner-sm.png" alt="">
+            <img class="img-fluid" src="" alt="">
           </div>
         </div>
       </div>
-     
-      <ul class="social-icons d-none d-lg-block">
-        <li><a href="#"><i class="ti-facebook"></i></a></li>
-        <li><a href="#"><i class="ti-twitter"></i></a></li>
-        <li><a href="#"><i class="ti-instagram"></i></a></li>
-      </ul>
-    
+      @include('parts._social-icons')
     </div>
   </section>
   <!--================Hero Banner Section end =================-->
