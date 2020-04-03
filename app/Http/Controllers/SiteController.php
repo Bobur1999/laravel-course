@@ -61,4 +61,24 @@ class SiteController extends Controller
     {
         return view('contact');
     }
+
+    public function search(Request $request)
+    {
+        //SQL
+        //SELECT * FROM `posts`
+        //WHERE `title` LIKE '%sar%' OR `short` LIKE '%sar%' OR `content` LIKE '%sar%'
+
+        $key = $request->get('key');
+
+        $key = '%'.trim($key).'%';
+
+        $results = Post::where('title', 'LIKE', $key)
+                       ->orWhere('short', 'LIKE', $key)
+                       ->orWhere('content', 'LIKE', $key)
+                       ->paginate(10);
+        // dd($results->toSql()); pagenationnan aldin berilishi kerak
+        $links = $results->links();
+
+        return view('search', compact('results', 'links'));
+    }
 }

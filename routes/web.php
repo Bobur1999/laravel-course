@@ -23,6 +23,8 @@ Route::get('/News', 'SiteController@blog')->name('blog');
 Route::get('/News/{id}', 'SiteController@newsMore')->name('batafsil');
 //contact
 Route::get('/contact', 'SiteController@contact')->name('contact');
+//Search
+Route::get('/search', 'SiteController@search')->name('search');
 //Admin routes
 Route::namespace('Admin')->middleware('auth')->name('admin.')->prefix('admin') -> group(function(){
     Route::get('/', function(){
