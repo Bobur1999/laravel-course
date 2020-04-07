@@ -35,6 +35,24 @@
           <div class="row">
               <div class="col-lg-8 mb-5 mb-lg-0">
                   <div class="blog_left_sidebar">
+                      <div>
+                        <form method="GET" action="{{route('search')}}">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input placeholder="Qidiruv..." value="{{ request()->get('key') }}" type="text" class="form-control" name="key" />
+                                    
+                                    <div class="input-group-append">
+                                        <button class="btn" type="submit"><i class="ti-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                      </div>
+                      @if(!count($results))
+                        <div class="alert alert-primary">
+                            Sizning "{{ request()->get('key') }}" so'rovingiz bo'yicha hech nima topilmadi.
+                        </div>
+                      @endif
                       @foreach($results as $post)                    
                         @include('parts._news-item', ['post' => $post])
                       @endforeach
@@ -43,25 +61,23 @@
                       </nav>
                   </div>
               </div>
-              <div class="col-lg-4">
-                  <div class="blog_right_sidebar">
-                      <aside class="single_sidebar_widget search_widget">
-                          <form action="#">
-                            <div class="form-group">
-                              <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Search Keyword">
-                                <div class="input-group-append">
-                                  <button class="btn" type="button"><i class="ti-search"></i></button>
+                  <!-- <div class="col-lg-4">
+                      <div class="blog_right_sidebar">
+                          <aside class="single_sidebar_widget search_widget">
+                              <form action="{{route('search')}}">
+                                <div class="form-group">
+                                  <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Search Keyword">
+                                    <div class="input-group-append">
+                                      <button class="btn" type="button"><i class="ti-search"></i></button>
+                                    </div>
+                                  </div>
                                 </div>
-                              </div>
-                            </div>
-                            <button class="button rounded-0 primary-bg text-white w-100" type="submit">Search</button>
-                          </form>
-                      </aside>
-
-                      
-                  </div>
-              </div>
+                                <button class="button rounded-0 primary-bg text-white w-100" type="submit">Qidirish</button>
+                              </form>
+                          </aside>                      
+                      </div>
+                  </div> -->
           </div>
       </div>
   </section>
