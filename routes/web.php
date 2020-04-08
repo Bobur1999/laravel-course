@@ -23,6 +23,7 @@ Route::get('/News', 'SiteController@blog')->name('blog');
 Route::get('/News/{id}', 'SiteController@newsMore')->name('batafsil');
 //contact
 Route::get('/contact', 'SiteController@contact')->name('contact');
+Route::post('/contact', 'SiteController@feedbackStore')->name('contact.store');
 //Search
 Route::get('/search', 'SiteController@search')->name('search');
 //Admin routes
